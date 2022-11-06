@@ -109,6 +109,7 @@ ul {
     align-items: center;
     margin: 1%;
     background-color: #B38CFF;
+    height: auto;
 }
 .Day {
     border: 1px solid #3E295C;
@@ -116,7 +117,7 @@ ul {
     width: 15vw;
     margin: 5px;
     padding: 5px;
-    height: 30vh;
+    height: auto;
     min-height: 150px; 
 }
 
