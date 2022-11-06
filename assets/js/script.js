@@ -1,30 +1,38 @@
+var inputEl = $('#input');
+var searchBtnEl = $('#searchButton');
+var counter = 1;
+
 //5 Day forecast API
-fetch('https://api.openweathermap.org/data/2.5/forecast?lat=40.7128&lon=74.0060&appid=2f6ede596cae9b405c9a790f743a5685', {
-  method: 'GET', //GET is the default.
-  credentials: 'same-origin', // include, *same-origin, omit
-  redirect: 'follow', // manual, *follow, error
-})
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  });
-
-
-  //Geocoding API
-  fetch('https://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=2f6ede596cae9b405c9a790f743a5685', {
-    method: 'GET', //GET is the default.
-    credentials: 'same-origin', // include, *same-origin, omit
-    redirect: 'follow', // manual, *follow, error
-  })
-    .then(function (response) {
-      return response.json();
+function getForecast(lat, lon) {
+    fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&limit=5&units=imperial&appid=2f6ede596cae9b405c9a790f743a5685', {
+        method: 'GET', //GET is the default.
+        credentials: 'same-origin', // include, *same-origin, omit
+        redirect: 'follow', // manual, *follow, error
     })
-    .then(function (data) {
-      console.log(data);
-    });
-  
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        });
+}
+
+
+//Geocoding API
+function cityConvert(city) {
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=5&units=imperial&appid=2f6ede596cae9b405c9a790f743a5685', {
+        method: 'GET', //GET is the default.
+        credentials: 'same-origin', // include, *same-origin, omit
+        redirect: 'follow', // manual, *follow, error
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        });
+
+}
 
 //use geocoding API to get lat & lon of a typed in city
 
@@ -34,4 +42,18 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=40.7128&lon=74.0060&
 
 //saveInput function has (city) input and name of city is turned lower case, turned to lat+lon object and saved locally with local value of city and its lat/lon value.
 
+searchBtnEl.on('click', function () {
+    var inputVal = inputEl.val().toLowerCase();
+    if (counter <= 4) {
+        saveCityLocally(inputVal)
+    } else {
+        counter = 1;
+        saveCityLocally(inputVal)
+    }
+})
+
+function saveCityLocally(inputVal) {
+    JSON.stringify(localStorage.setItem('city' + counter, inputVal));
+    counter++;
+}
 
