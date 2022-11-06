@@ -2,3 +2,53 @@
     font-family: 'Zen Antique Soft', serif;
 }
 
+body {
+    background-color: white;
+    color: #3E295C;
+    padding: 0;
+    margin: 0;
+}
+header {
+    display: flex;
+    background-color: #3E295C;
+    color: #B88CF9;
+    width: 100vw;
+    margin-top: 0;
+    margin-bottom: 2%;
+    justify-content: center;
+    align-items: center;
+}
+main {
+    padding-left: 2%;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    width: 12.5vw;
+    border: 1px solid #3E295C;
+    padding: 1%;
+    height: 80vh;
+    align-content: center;
+    min-width: 150px;
+    border-radius: 5px;
+    background-color: #B38CFF;;
+}
+
+.input-box {
+    width: auto;
+    height: 30px;
+    border: 1px solid #3E295C;
+    border-radius: 5px;
+    background-color: white;
+    color: #3E295C;
+}
+
+.searchBtn {
+    margin-top: 5%;
+    border: 1px solid #3E295C;
+    border-radius: 5px;
+    height: 30px;
+    background-color: #3E295C;
+    color: #B88CF9;
+}
