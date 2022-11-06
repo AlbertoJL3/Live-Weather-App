@@ -44,16 +44,22 @@ function cityConvert(city) {
 
 searchBtnEl.on('click', function () {
     var inputVal = inputEl.val().toLowerCase();
-    if (counter <= 4) {
+    if (counter <= 5) {
         saveCityLocally(inputVal)
-    } else {
+        getCity(counter);
+        counter++;
+    } else if (counter == 6) {
         counter = 1;
         saveCityLocally(inputVal)
+        getCity(counter);
     }
 })
 
 function saveCityLocally(inputVal) {
     JSON.stringify(localStorage.setItem('city' + counter, inputVal));
-    counter++;
+    
 }
 
+function getCity(number) {
+var city = localStorage.getItem('city'+number)
+}
