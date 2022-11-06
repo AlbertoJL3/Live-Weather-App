@@ -6,7 +6,7 @@ var currentWindEl = $('#current-wind');
 var currentHumidEl = $('#current-humidity');
 var resultsEl = $('#results');
 var counter = 1;
-
+var cityData
 //5 Day forecast API
 function getForecast(lat, lon) {
     fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&limit=5&units=imperial&appid=2f6ede596cae9b405c9a790f743a5685', {
@@ -38,33 +38,18 @@ function cityConvert(city) {
                 lat: data[0].lat,
                 lon: data[0].lon
             }
-            console.log(cityData);
+            localStorage.setItem('city' + counter, JSON.stringify(cityData));
+            //console.log(cityData);
         });
-
 }
-//when search is clicked input value saves with saveInput function, and shows results boxes with showResults() function
-//showResults() adds the class "display: block" to the results section. 
-//saveInput function has (city) input and name of city is turned lower case, turned to lat+lon object and saved locally with local value of city and its lat/lon value.
 
 searchBtnEl.on('click', function () {
     var inputVal = inputEl.val().toLowerCase();
     if (counter <= 5) {
-        saveCityLocally(inputVal)
-        getCity(counter);
+        cityConvert(inputVal)
         counter++;
     } else if (counter == 6) {
         counter = 1;
-        saveCityLocally(inputVal)
-        getCity(counter);
-    }
-    cityConvert(inputVal);
-})
-function saveCityLocally(inputVal) {
-    JSON.stringify(localStorage.setItem('city' + counter, cityConvert(inputVal)));
-
-}
-
-function getCity(number) {
-    var city = localStorage.getItem('city' + number)
-}
-
+        cityConverty(inputVal)
+    } 
+});
