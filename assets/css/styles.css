@@ -12,7 +12,7 @@ body {
 header {
     display: flex;
     background-color: #3E295C;
-    color: #B88CF9;
+    color: white;
     width: 100vw;
     margin-top: 0;
     margin-bottom: 2%;
@@ -26,6 +26,10 @@ main {
     flex-direction: row;
 }
 
+ul {
+    border-top: 1px solid #3E295C;
+}
+
 .search-box {
     display: flex;
     flex-direction: column;
@@ -37,7 +41,6 @@ main {
     min-width: 150px;
     border-radius: 5px;
     background-color: #B38CFF;
-    ;
 }
 
 .input-box {
@@ -55,7 +58,7 @@ main {
     border-radius: 5px;
     height: 30px;
     background-color: #3E295C;
-    color: #B88CF9;
+    color: white;
 }
 
 .results-box {
@@ -67,6 +70,42 @@ main {
     background-color: #3E295C;
 }
 
+.city-info-main {
+    padding: 1%;
+    margin: 1%;
+    border: 1px solid #3E295C;
+    border-radius: 5px;
+    background-color: #B38CFF;
+}
+.forecast-box {
+    padding: 1%;
+    margin: 1%;
+    border: 1px solid #3E295C;
+    border-radius: 5px;
+    background-color: #B38CFF;
+    height: 40vh;
+}
+.forecast-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+.forecast-results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1%;
+    background-color: #B38CFF;
+}
+.Day {
+    border: 1px solid #3E295C;
+    border-radius: 5px;
+    width: 15vw;
+    margin: 5px;
+    padding: 5px;
+    height: 20vh;
+}
 
 .hide {
     display: none;
