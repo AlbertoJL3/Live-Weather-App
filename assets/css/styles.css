@@ -60,7 +60,16 @@ ul {
     background-color: #3E295C;
     color: white;
 }
-
+.searchBtn:hover {
+    margin-top: 5%;
+    border: 1px solid #B38CFF;
+    border-radius: 5px;
+    height: 30px;
+    cursor: pointer;
+    background-color: white;
+    color: #3E295C;
+    box-shadow: #3E295C;
+}
 .results-box {
     border: 1px solid #3E295C;
     height: auto;
