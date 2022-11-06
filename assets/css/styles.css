@@ -8,6 +8,7 @@ body {
     padding: 0;
     margin: 0;
 }
+
 header {
     display: flex;
     background-color: #3E295C;
@@ -18,8 +19,11 @@ header {
     justify-content: center;
     align-items: center;
 }
+
 main {
+    display: flex;
     padding-left: 2%;
+    flex-direction: row;
 }
 
 .search-box {
@@ -32,7 +36,8 @@ main {
     align-content: center;
     min-width: 150px;
     border-radius: 5px;
-    background-color: #B38CFF;;
+    background-color: #B38CFF;
+    ;
 }
 
 .input-box {
@@ -46,9 +51,27 @@ main {
 
 .searchBtn {
     margin-top: 5%;
-    border: 1px solid #3E295C;
+    border: 1px solid #B38CFF;
     border-radius: 5px;
     height: 30px;
     background-color: #3E295C;
     color: #B88CF9;
+}
+
+.results-box {
+    border: 1px solid #3E295C;
+    height: auto;
+    width: 80vw;
+    margin-left: 2.5vw;
+    border-radius: 5px;
+    background-color: #3E295C;
+}
+
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
