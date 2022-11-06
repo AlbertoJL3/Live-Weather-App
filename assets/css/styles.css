@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: white;
+    background-color: #3E295C;
     color: #3E295C;
     padding: 0;
     margin: 0;
@@ -11,8 +11,8 @@ body {
 
 header {
     display: flex;
-    background-color: #3E295C;
-    color: white;
+    background-color:#B38CFF;
+    color: #3E295C;
     width: 100vw;
     margin-top: 0;
     margin-bottom: 2%;
@@ -24,10 +24,13 @@ main {
     display: flex;
     padding-left: 2%;
     flex-direction: row;
+    background-color: #3E295C;
 }
 
 ul {
     border-top: 1px solid #3E295C;
+    display: flex; 
+    flex-direction: column;
 }
 
 .search-box {
@@ -76,7 +79,7 @@ ul {
     width: 80vw;
     margin-left: 2.5vw;
     border-radius: 5px;
-    background-color: #3E295C;
+   
 }
 
 .city-info-main {

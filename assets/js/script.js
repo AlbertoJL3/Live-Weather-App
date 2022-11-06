@@ -6,13 +6,20 @@ var currentWindEl = $('#current-wind');
 var currentHumidEl = $('#current-humidity');
 var currentIconEl = $('#current-icon')
 var resultsEl = $('#results');
-var counter = 1;
-var cityData
-
-
-
+var counter = 0;
+var cityData = '';
 //use geocoding API to get lat & lon of a typed in city
 //Geocoding API is used to save lattitude and longitude of the user's inputted city. 
+
+searchBtnEl.on('click', function () {
+    handleButtonSubmit()
+})
+
+function handleButtonSubmit() {
+    var inputVal = inputEl.val().toLowerCase();
+    cityConvert(inputVal)
+}
+
 function cityConvert(city) {
     fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&units=imperial&appid=2f6ede596cae9b405c9a790f743a5685', {
         method: 'GET', //GET is the default.
@@ -28,16 +35,18 @@ function cityConvert(city) {
                 lon: data[0].lon
             }
             localStorage.setItem(city, JSON.stringify(cityData));
+            getCurrentCity(city)
         });
 }
 
+function getCurrentCity(city) {
+    var currentCityData = JSON.parse(localStorage.getItem(city));
+    getForecast(city, currentCityData.lat, currentCityData.lon)
+}
 
 //5 Day forecast API
 function getForecast(city, lat, lon) {
-    fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&units=imperial&appid=2f6ede596cae9b405c9a790f743a5685', {
-        method: 'GET',
-        credentials: 'same-origin',
-        redirect: 'follow',
+    fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' +lat+ '&lon='+lon+'&units=imperial&appid=2f6ede596cae9b405c9a790f743a5685', {
     })
         .then(function (response) {
             return response.json();
@@ -53,27 +62,21 @@ function getForecast(city, lat, lon) {
             }
             localStorage.setItem(city, JSON.stringify(cityForecastData));
             console.log(data)
+            setCity(city)
         });
 }
 
-function getCurrentCity(city) {
-    var currentCityData = JSON.parse(localStorage.getItem(city));
-    getForecast(city, currentCityData.lat, currentCityData.lon)
-}
 
+
+//after getting data
 function setCity(city) {
     var cityObject = JSON.parse(localStorage.getItem(city));
-    currentIconEl.attr("src",`http://openweathermap.org/img/w/${cityObject.CityWeather}.png`);
+    currentIconEl.attr("src", `http://openweathermap.org/img/w/${cityObject.CityWeather}.png`);
     currentCityEl.text(cityObject.CityName + ', ' + cityObject.CityCountry)
-    currentTempEl.text('Temperature: ' + cityObject.CityTemp + 'Fahrenheit  ')
-    currentWindEl.text('Wind: ' + cityObject.CityWind +'mph')
-    currentHumidEl.text('Humidity: ' + cityObject.CityHumidity+'%')
+    currentTempEl.text('Temperature: ' + cityObject.CityTemp).append('<span>&#8457;</span>')
+    currentWindEl.text('Wind: ' + cityObject.CityWind + 'mph')
+    currentHumidEl.text('Humidity: ' + cityObject.CityHumidity + '%')
 }
 
-searchBtnEl.on('click', function () {
-    var inputVal = inputEl.val().toLowerCase();
-    cityConvert(inputVal)
-    getCurrentCity(inputVal)
-    setCity(inputVal)
-});
+
 
