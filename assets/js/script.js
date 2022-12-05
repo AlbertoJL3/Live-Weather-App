@@ -1,5 +1,6 @@
 var inputEl = $('#input');
 var searchBtnEl = $('#searchButton');
+var cityListEl = $('#city-list')
 var currentCityEl = $('#current-city');
 var currentTempEl = $('#current-temp');
 var currentWindEl = $('#current-wind');
@@ -19,6 +20,7 @@ searchBtnEl.on('click', function () {
 function handleButtonSubmit() {
     var inputVal = inputEl.val().toLowerCase();
     cityConvert(inputVal)
+    createBtn(inputVal)
 }
 
 function cityConvert(city) {
@@ -100,7 +102,7 @@ function getDayForecast(city, lat, lon) {
                     CityHumidity: data.list[j].main.humidity,
                     CityWeather: data.list[j].weather[0].icon
                 }
-                
+
                 localStorage.setItem(city, JSON.stringify(ForecastData));
                 var cityObject = JSON.parse(localStorage.getItem(city));
                 var iconEl = $('#icon' + i)
@@ -119,5 +121,17 @@ function getDayForecast(city, lat, lon) {
         )
 }
 
-//Create function that saves city name as a button 
+//function for adding a button every time you click search with a limit of 5-6 buttons.
+function createBtn(city) {
+    var citybutton = document.createElement("button");  // Create with DOM
+    var citylistEl = document.createElement("li");  // Create with DOM
+    citybutton.innerHTML = city;
+    cityListEl.append(citybutton)
+    console.log('howdy')
+    document.body.append(cityListEl)
+   //button adds class "shown" and sets innerHTML as city name 
+}
 
+//function that runs cityConver(), and setCity() with the input being city. 
+
+//function that shows the results box on event. 

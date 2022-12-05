@@ -55,7 +55,7 @@ ul {
     color: #3E295C;
 }
 
-.searchBtn {
+button {
     margin-top: 5%;
     border: 1px solid #B38CFF;
     border-radius: 5px;
@@ -63,7 +63,7 @@ ul {
     background-color: #3E295C;
     color: white;
 }
-.searchBtn:hover {
+button:hover {
     margin-top: 5%;
     border: 1px solid #B38CFF;
     border-radius: 5px;
@@ -128,3 +128,33 @@ ul {
 .show {
     display: block;
 }
+
+
+@media screen and (max-width: 1150px) {
+  
+  }
+  
+  /* Large smartphones - navbar changes color */
+  @media screen and (max-width: 768px) {
+
+  }
+  
+  /* Small smartphones - image placeholders change color */
+  @media screen and (max-width: 576px) {
+    main, .forecast-results {
+        display: flex;
+        padding: 15vw;
+        flex-direction: column;
+        margin:0; 
+        width: auto;
+        align-items: center;
+        justify-content: center;
+        width: 80vw;
+    }
+    .search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80vw;
+    }
+  }
