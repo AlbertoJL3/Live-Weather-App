@@ -10,9 +10,6 @@ var resultsEl = $('#results');
 var counter = 0;
 var cityData = '';
 
-//use geocoding API to get lat & lon of a typed in city
-//Geocoding API is used to save lattitude and longitude of the user's inputted city. 
-
 searchBtnEl.on('click', function () {
     handleButtonSubmit()
 })
@@ -126,12 +123,11 @@ function createBtn(city) {
     var citybutton = document.createElement("button");  // Create with DOM
     var citylistEl = document.createElement("li");  // Create with DOM
     citybutton.innerHTML = city;
+    citybutton.addEventListener('click', () => {
+        cityConvert(citybutton.innerHTML)
+    });
     cityListEl.append(citybutton)
     console.log('howdy')
     document.body.append(cityListEl)
-   //button adds class "shown" and sets innerHTML as city name 
+
 }
-
-//function that runs cityConver(), and setCity() with the input being city. 
-
-//function that shows the results box on event. 
